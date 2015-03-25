@@ -66,7 +66,9 @@
     "require-dir": "^0.1.0",
     "vinyl-source-stream": "~1.0.0",
     "watchify": "^2.4.0",
-    "gulp-plumber": "^1.0.0"
+    "gulp-plumber": "^1.0.0",
+    "handlebars": "^3.0.0",
+    "coffeeify": "~1.0.0"
   },
   "dependencies": {
     "font-awesome": "^4.3.0",
