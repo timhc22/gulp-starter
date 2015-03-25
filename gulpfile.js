@@ -17,6 +17,7 @@ var gulp            = require('gulp'),
     gutil           = require('gulp-util'),
     prettyHrtime    = require('pretty-hrtime'),
     notify          = require("gulp-notify"),
+    plumber         = require('gulp-plumber'), //Prevent pipe breaking caused by errors from gulp plugins
     startTime
 ;
 
@@ -26,6 +27,7 @@ gulp.task('default', ['sass', 'images', 'markup', 'watch']);
 
 gulp.task('sass', function () {
     return gulp.src(config.sass.src)
+        .pipe(plumber())
         .pipe(sourcemaps.init())
         .pipe(sass(config.sass.settings))
         .on('error', handleErrors)

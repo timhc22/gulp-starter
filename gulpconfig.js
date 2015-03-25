@@ -1,5 +1,6 @@
-var DEST = "./build";
 var SRC = "./src";
+var DEST = "./build";
+var BOWER_SOURCE = "./bower_components";
 
 module.exports = {
     browserSync: {
@@ -10,10 +11,10 @@ module.exports = {
     },
     sass: {
         src: SRC + "/sass/**/*.{sass,scss}",
-        dest: DEST,
+        dest: DEST + '/css/',
         settings: {
-            indentedSyntax: true, // Enable .sass syntax!
             imagePath: 'images' // Used by the image-url helper
+            //errorLogToConsole: true
             //outputStyle: 'compressed'
         }
     },
@@ -41,8 +42,8 @@ module.exports = {
             //},
             {
                 entries: SRC + '/javascript/page.js',
-                dest: DEST,
-                outputName: 'page.js',
+                dest: DEST + '/js/',
+                outputName: 'functions.js',
                 // list of externally available modules to exclude from the bundle
                 external: ['jquery', 'underscore']
                 // list of modules to make require-able externally
@@ -51,8 +52,8 @@ module.exports = {
         ]
     },
     production: {
-        cssSrc: DEST + '/*.css',
-        jsSrc: DEST + '/*.js',
+        cssSrc: DEST + '/css/*.css',
+        jsSrc: DEST + '/js/*.js',
         dest: DEST
     }
 };
