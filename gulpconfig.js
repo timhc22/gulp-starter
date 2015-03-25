@@ -14,6 +14,7 @@ module.exports = {
         settings: {
             indentedSyntax: true, // Enable .sass syntax!
             imagePath: 'images' // Used by the image-url helper
+            //outputStyle: 'compressed'
         }
     },
     images: {
