@@ -1,5 +1,9 @@
-### Stripped down fork of gulp-starter, intended to be used on smaller projects
+### Stripped down gulp-starter
+Smaller, stripped back version of gulp-starter intended to be used on smaller projects/for prototyping.
+The immediate compilation of sass files and auto browser reloading is excellent!
 
+
+Original documentation below:
 
 gulp-starter
 ============
