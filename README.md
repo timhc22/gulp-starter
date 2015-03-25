@@ -1,6 +1,5 @@
-**Lots of new stuff happening in the [2.0 branch](https://github.com/greypants/gulp-starter/tree/2.0)**
+### Stripped down fork of gulp-starter, intended to be used on smaller projects
 
-**Use Rails?** Check out http://viget.com/extend/gulp-rails-asset-pipeline and https://github.com/vigetlabs/gulp-rails-pipeline
 
 gulp-starter
 ============
