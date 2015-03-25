@@ -1,6 +1,5 @@
 var SRC = "./src";
 var DEST = "./build";
-var BOWER_SOURCE = "./bower_components";
 
 module.exports = {
     browserSync: {
@@ -41,13 +40,13 @@ module.exports = {
             //    // why this is 'backbone/node_modules/underscore' and not 'underscore'
             //},
             {
-                entries: SRC + '/javascript/page.js',
+                entries: SRC + '/javascript/functions.js',
                 dest: DEST + '/js/',
                 outputName: 'functions.js',
                 // list of externally available modules to exclude from the bundle
-                external: ['jquery', 'underscore']
+                //external: ['jquery', 'underscore']
                 // list of modules to make require-able externally
-                //require: ['jquery', 'backbone/node_modules/underscore']
+                require: ['jquery', 'backbone/node_modules/underscore']
             }
         ]
     },

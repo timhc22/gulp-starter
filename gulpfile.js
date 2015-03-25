@@ -81,14 +81,14 @@ gulp.task('watch', ['watchify','browserSync'], function() {
 gulp.task('browserSync', function() {
     browserSync(config.browserSync);
 });
+gulp.task('browserify', function() {
+    return browserifyTask(config.browserify, false)
+});
 
+//rebuild browserify bundles
 gulp.task('watchify', function() {
     // Start browserify task with devMode === true
     return browserifyTask(config.browserify, true);
-});
-
-gulp.task('browserify', function() {
-    return browserifyTask(config.browserify, false)
 });
 
 gulp.task('karma', karmaTask);
