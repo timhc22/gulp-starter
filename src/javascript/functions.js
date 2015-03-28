@@ -32,6 +32,18 @@ $(function()
         model: Item
     });
 
+    //Responsible for rendering each individual Item.
+    var ItemView = Backbone.View.extend({
+        tagName: 'li', //name of (orphan) root tag in this.el
+        initialize: function(){
+            _.bindAll(this, 'render'); //every function that uses 'this' as the current object should be in here
+        },
+        render: function(){
+            $(this.el).html('<span>'+this.model.get('part1')+' '+this.model.get('part2')+'</span>');
+            return this; // for chainable calls, like .render().el
+        }
+    });
+
     var ListView = Backbone.View.extend({
         el: $('.backbone'), // attaches `this.el` to an existing element.
 
@@ -51,7 +63,6 @@ $(function()
         },
 
         render: function(){
-
             //Save reference to this so it can be accessed from within the scope of the callback below
             var self = this;
             $(this.el).append("<button id='add'>Add list item</button>");
@@ -71,9 +82,12 @@ $(function()
             this.collection.add(item); // add item to collection; view is updated via event 'add'
         },
 
-        //View updates are delegated to the add event listener appendItem() below.
+        //appendItem() is no longer responsible for rendering an individual Item. This is now delegated to the render() method of each ItemView instance.
         appendItem: function(item){
-            $('ul', this.el).append("<li>"+item.get('part1')+" "+item.get('part2')+"</li>");
+            var itemView = new ItemView({
+                model: item
+            });
+            $('ul', this.el).append(itemView.render().el);
         }
 
 
