@@ -1,0 +1,227 @@
+$mobileBreakpoint: 768px;
+$navColor: #222;
+$containerWidth: 80%;//inner container
+$containerMaxWidth: 960px;//inner container
+
+$textColor: #eee;
+$textHoverColor: #777;
+
+$navHeight: 50px;
+
+
+
+.navigation {
+    background: $navColor;
+    width:100%;
+    min-height: $navHeight;
+    display:block;
+    box-sizing: border-box;
+    line-height:20px;
+    //position:fixed; //if you want a fixed header
+
+    &:before,
+    &:after {
+        content: " "; // 1
+        display: table; // 2
+    }
+    &:after {
+        clear: both;
+    }
+
+
+    .menu-container {
+
+        &:before,
+        &:after {
+            content: " "; // 1
+            display: table; // 2
+        }
+        &:after {
+            clear: both;
+        }
+
+        width: $containerWidth;
+        box-sizing: border-box;
+        max-width: $containerMaxWidth;
+        margin: 0 auto;
+        position: relative; //stops button moving to top
+
+        @media (max-width: $mobileBreakpoint) {
+//            padding: 0px 20px;
+        }
+
+
+        @media (min-width: 400px) {
+            width: 85%;
+        }
+
+        //TODO LINK WITH SKELETON
+        @media (min-width: 550px) {
+            width: 80%;
+        }
+    }
+
+    .navbar-header {
+
+        &:before,
+        &:after {
+            content: " "; // 1
+            display: table; // 2
+        }
+        &:after {
+            clear: both;
+        }
+
+        box-sizing: border-box;
+        float: left;
+        //display: inline-block; //use instead of min-height?
+        .logo {
+            float: left;
+            text-decoration: none;
+            font-size: 30px;
+            font-weight: bold;
+//            height: $navHeight;
+//            line-height: $navHeight;
+            color: $textColor;
+            padding: 17px 0px;
+        }
+    }
+
+    nav {
+        min-height:$navHeight;
+
+
+        [type="checkbox"], label {
+            display: none;
+
+            height: 40px;
+            padding:6px;
+        }
+
+        @media (max-width: $mobileBreakpoint) {
+
+            label:after {
+                content: '';
+                display: block;
+
+                width: 30px;
+                height: 5px;
+                background: #777;
+                margin: 7px 5px;
+                box-shadow: 0px 10px 0px #777, 0px 20px 0px #777
+            }
+
+            //dropdown
+            [type="checkbox"]:checked ~ ul {
+                display: block;
+                z-index: 9999;
+                position: relative;
+                width:100%;
+
+                > li ul li {
+                    left:20px;
+                }
+
+            }
+        }
+
+        @media (max-width: $mobileBreakpoint) {
+            label {
+                display: block;
+                background: $navColor;
+                width: 40px;
+                //                    height: 40px;
+                cursor: pointer;
+                position: absolute;
+                right: 0px;
+                top: 0px;
+            }
+        }
+
+        ul {
+            float: right;
+            margin: 0;
+            list-style: none;
+            display: block;
+
+            @media (max-width: $mobileBreakpoint) {
+                display: none;
+            }
+
+            li {
+                float: left;
+//                    text-align: center;
+//                    line-height: 40px;
+//                    margin-left: 70px;
+                position: relative;
+                display: block;
+
+                margin-bottom: 0px; //override skeleton style
+
+                @media (max-width: $mobileBreakpoint) {
+                    display: block;
+                    float: none;
+                    width: 100%;
+                    text-align: left;
+                    background: $navColor;
+                    text-indent: 20px;
+
+                    margin-left: 0px;
+                }
+
+                a {
+                    color: $textColor;
+                    cursor: pointer;
+                    display: block;
+                    text-decoration: none;
+                    position: relative;
+                    padding: 17px 17px;
+                }
+
+                &:hover {
+                    position: relative;
+
+                    ul {
+                        display: block;
+                    }
+
+                    > a {
+                        color: $textHoverColor;
+                    }
+                }
+
+                //subnav
+                ul {
+                    display: none;
+                    position: absolute;
+                    padding: 0px;
+                    min-width:150px;
+                    z-index: 2000;
+                    background-color: $navColor;
+
+                    @media (max-width: $mobileBreakpoint) {
+                        display: block;
+                        position: relative;
+                        width: 100%;
+                        z-index: 9999;
+                        float: none;
+                    }
+
+                    li {
+                        width: 100%;
+                        text-align: left;
+
+                        @media (max-width: $mobileBreakpoint) {
+                            display: block;
+                            float: none;
+                        }
+
+                        a {
+                            text-decoration: none;
+                        }
+                    }
+                }
+            }
+        }//end ul
+    }//end nav
+}
