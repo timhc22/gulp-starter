@@ -50,8 +50,7 @@ $navHeight: 50px;
 //            padding: 0px 20px;
         }
 
-
-        @media (min-width: 400px) {
+        @media (min-width: 0px) {
             width: 85%;
         }
 
@@ -119,7 +118,7 @@ $navHeight: 50px;
                 width:100%;
 
                 > li ul li {
-                    left:20px;
+                    text-indent:30px;
                 }
 
             }
@@ -164,12 +163,13 @@ $navHeight: 50px;
                     width: 100%;
                     text-align: left;
                     background: $navColor;
-                    text-indent: 20px;
+//                    text-indent: 20px;
 
                     margin-left: 0px;
                 }
 
                 a {
+                    border-bottom: 1px solid #444;
                     color: $textColor;
                     cursor: pointer;
                     display: block;
