@@ -6,7 +6,7 @@ $containerMaxWidth: 960px;//inner container
 $textColor: #eee;
 $textHoverColor: #777;
 
-$navHeight: 50px;
+$navHeight: 54px;
 
 
 
@@ -82,7 +82,7 @@ $navHeight: 50px;
 //            height: $navHeight;
 //            line-height: $navHeight;
             color: $textColor;
-            padding: 17px 0px;
+            padding: 20px 0px 0px 0px;
         }
     }
 
@@ -103,7 +103,6 @@ $navHeight: 50px;
                 display: block;
                 background: $navColor;
                 width: 40px;
-                //                    height: 40px;
                 cursor: pointer;
                 position: absolute;
                 right: 0px;
@@ -143,6 +142,7 @@ $navHeight: 50px;
 
             @media (max-width: $mobileBreakpoint) {
                 display: none;
+                margin-top:20px;
             }
 
             li {
@@ -153,7 +153,6 @@ $navHeight: 50px;
                 margin-bottom: 0px; //override skeleton style
 
                 a {
-                    border-bottom: 1px solid #444;
                     color: $textColor;
                     cursor: pointer;
                     display: block;
@@ -178,6 +177,12 @@ $navHeight: 50px;
                 }
 
                 @media (max-width: $mobileBreakpoint) {
+
+                    a {
+                        border-bottom: 1px solid #444;
+
+                    }
+
                     display: block;
                     float: none;
                     width: 100%;
@@ -223,6 +228,7 @@ $navHeight: 50px;
                         width: 100%;
                         z-index: 9999;
                         float: none;
+                        margin-top:0px;
                     }
 
                     li {
@@ -235,6 +241,7 @@ $navHeight: 50px;
                         }
 
                         a {
+                            border-bottom: 1px solid #444;
                             text-decoration: none;
                         }
                     }
