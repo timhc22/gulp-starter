@@ -3,6 +3,16 @@ Smaller, stripped back version of gulp-starter intended to be used on smaller pr
 The immediate compilation of sass files and auto browser reloading is excellent!
 
 
+
+### ToDo
+
+Combine js files
+bem the nav
+
+
+
+
+
 Original documentation below:
 
 gulp-starter
