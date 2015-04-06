@@ -1,19 +1,20 @@
-$navColor: #222;
-$navTextColor: #eee;
-$navTextHoverColor: #777;
-$navHeight: 54px;
-$navBorder: 1px solid #444;
+$navColor: #222; // nav bar
+$navTextColor: #eee; // nav text
+$navButtonColor: $light-grey; // button
+$navTextHoverColor: #777; // drop down hover
+$navBorder: 1px solid $light-grey; // drop down borders
+$navMinHeight: 54px;
 $navZIndex: 9999;
 
 .navigation {
     background: $navColor;
     width:100%;
-    min-height: $navHeight;
+    min-height: $navMinHeight;
     display:block;
     box-sizing: border-box;
     line-height:20px;
     z-index: $navZIndex;
-    //    position:fixed; //if you want a fixed header
+        position:fixed; //if you want a fixed header
 
     .navbar-header {
         box-sizing: border-box;
@@ -32,7 +33,7 @@ $navZIndex: 9999;
     }
 
     nav {
-        min-height:$navHeight;
+        min-height:$navMinHeight;
 
         [type="checkbox"] {
             display: none;
@@ -57,9 +58,9 @@ $navZIndex: 9999;
 
             width: 30px;
             height: 5px;
-            background: #777;
+            background: $navButtonColor;
             margin: 7px 5px;
-            box-shadow: 0px 10px 0px #777, 0px 20px 0px #777
+            box-shadow: 0px 10px 0px $navButtonColor, 0px 20px 0px $navButtonColor;
         }
         //––––––––––––––––––––––––––––
         // End dropdown menu button
@@ -133,6 +134,7 @@ $navZIndex: 9999;
                     right: 0px;
                     top: 0px;
                     text-align:right;
+                    margin: 0px;
                 }
 
                 @media (#{$bp-larger-than-tablet}) {
@@ -140,7 +142,7 @@ $navZIndex: 9999;
                         display: none;
                     }
 
-                    //display for submenu
+                    // Display for submenu
                     &:hover {
                         ul {
                             display: block;
@@ -184,6 +186,6 @@ $navZIndex: 9999;
                 //––––––––––––––––––––––––––––––––––––––––––––––––––––
                 // End Subnav
             }
-        }//end ul
-    }//end nav
+        }// End ul
+    }// End nav
 }
