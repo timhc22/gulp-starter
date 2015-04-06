@@ -29,36 +29,36 @@ $navHeight: 54px;
     }
 
 
-    .menu-container {
-
-        &:before,
-        &:after {
-            content: " "; // 1
-            display: table; // 2
-        }
-        &:after {
-            clear: both;
-        }
-
-        width: $containerWidth;
-        box-sizing: border-box;
-        max-width: $containerMaxWidth;
-        margin: 0 auto;
-        position: relative; //stops button moving to top
-
-        @media (max-width: $mobileBreakpoint) {
-//            padding: 0px 20px;
-        }
-
-        @media (min-width: 0px) {
-            width: 85%;
-        }
-
-        //TODO LINK WITH SKELETON
-        @media (min-width: 550px) {
-            width: 80%;
-        }
-    }
+//    .menu-container {
+//
+//        &:before,
+//        &:after {
+//            content: " "; // 1
+//            display: table; // 2
+//        }
+//        &:after {
+//            clear: both;
+//        }
+//
+//        width: $containerWidth;
+//        box-sizing: border-box;
+//        max-width: $containerMaxWidth;
+//        margin: 0 auto;
+//        position: relative; //stops button moving to top
+//
+//        @media (max-width: $mobileBreakpoint) {
+////            padding: 0px 20px;
+//        }
+//
+//        @media (min-width: 0px) {
+//            width: 85%;
+//        }
+//
+//        //TODO LINK WITH SKELETON
+//        @media (min-width: 550px) {
+//            width: 80%;
+//        }
+//    }
 
     .navbar-header {
 
