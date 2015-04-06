@@ -73,7 +73,7 @@ $navZIndex: 9999;
         }
 
         // Don't show mobile menu on devices which don't need it
-        @media (#{$bp-larger-than-tablet}) {
+        @media (#{$bp-larger-than-desktop}) {
             [type="checkbox"], label {
                 display: none;
             }
@@ -88,7 +88,7 @@ $navZIndex: 9999;
             position: relative;
             z-index: $navZIndex;
 
-            @media (#{$bp-larger-than-tablet}) {
+            @media (#{$bp-larger-than-desktop}) {
                 display: block;
                 margin: 0px;
                 width: auto;
@@ -101,7 +101,7 @@ $navZIndex: 9999;
                 width: 100%;
                 display: block;
 
-                @media (#{$bp-larger-than-tablet}) {
+                @media (#{$bp-larger-than-desktop}) {
                     width: auto;
                 }
 
@@ -121,7 +121,7 @@ $navZIndex: 9999;
                     padding: 17px 17px;
                 }
 
-                @media (#{$bp-larger-than-tablet}) {
+                @media (#{$bp-larger-than-desktop}) {
                     a {
                         border-bottom: none;
                     }
@@ -139,7 +139,7 @@ $navZIndex: 9999;
                     margin: 0px;
                 }
 
-                @media (#{$bp-larger-than-tablet}) {
+                @media (#{$bp-larger-than-desktop}) {
                     [type="checkbox"], label {
                         display: none;
                     }
@@ -163,7 +163,7 @@ $navZIndex: 9999;
                     margin: 0px 0px 0px 0px;
                     z-index: $navZIndex;
 
-                    @media (#{$bp-larger-than-tablet}) {
+                    @media (#{$bp-larger-than-desktop}) {
                         display: none;
                         position: absolute;
                         padding: 0px;
@@ -174,7 +174,7 @@ $navZIndex: 9999;
                     li {
                         text-indent:30px;
 
-                        @media (#{$bp-larger-than-tablet}) {
+                        @media (#{$bp-larger-than-desktop}) {
                             width: 100%;
                             text-align: left;
                             text-indent:0px;
