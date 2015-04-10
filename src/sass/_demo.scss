@@ -1,3 +1,5 @@
+$heroFontColor: #fcfbf3; // hero text
+
 /* Shared
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .button {
@@ -20,7 +22,13 @@
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 .hero {
-    background-color: #F7F1EC;
+//    background-color: #F7F1EC;
+//    background-image: url('../images/values-bg.jpg');
+    background: url("../images/values-bg.jpg") no-repeat fixed left center/cover #424141;
+//    background-size: cover;
+
+    color: $heroFontColor;
+
 }
 
 .phones {
@@ -38,7 +46,9 @@
 /* Values
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .values {
-    background-image: url('../images/values-bg.jpg');
+//    background-image: url('../images/values-bg.jpg');
+//    background-color: #DFECFD;
+    background-color: #fefef6;
     background-size: cover;
     color: #fff;
     padding-bottom: 5rem;
@@ -60,7 +70,8 @@
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .get-help {
 //    border-bottom: 1px solid #ddd;
-    background-color: #A5BCF4;
+//    background-color: #A5BCF4;
+    background-color: #c1d2fc;
 }
 
 /* Categories

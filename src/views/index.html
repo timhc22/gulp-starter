@@ -27,24 +27,23 @@
 </head>
 <body>
 
-<!-- Primary Page Layout
-–––––––––––––––––––––––––––––––––––––––––––––––––– -->
 
+<!--<div id="headerContent"></div>-->
 <header class="navigation js-navigation">
     <div class="container">
-        <div class="navbar-header">
+        <div class="navigation__header">
             <a href="#" class="logo">Test</a>
         </div>
 
-        <nav>
+        <nav class="navigation__nav">
             <input type="checkbox" id="nav" class="js-nav-checkbox" /><label for="nav"></label>
             <ul>
                 <li><a href="#">Home</a></li>
                 <li>
                     <a href="#">Work</a>
                     <label for="sub-dropdown" class="toggle-sub" onclick><img class="down-arrow" src="./images/down-arrow.png"></label>
-                    <input type="checkbox" id="sub-dropdown" class="sub-nav-check js-nav-checkbox">
-                    <ul>
+                    <input type="checkbox" id="sub-dropdown" class="js-nav-checkbox">
+                    <ul class="navigation__subnav">
                         <li><a href="#">Web</a></li>
                         <li><a href="#">Print</a></li>
                     </ul>
@@ -57,11 +56,16 @@
     </div>
 </header>
 
+
+
+<!-- Primary Page Layout
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
 <div class="section hero">
     <div class="container">
         <div class="row">
             <div class="one-half column">
-                <h4>Basic Page</h4>
+                <h4>Summer Is Coming!</h4>
                 <p>This index.html page is a placeholder with the CSS, font and favicon. It's just waiting for you to add some content! If you need some help hit up the <a href="http://www.getskeleton.com">Skeleton documentation</a>.</p>
                 <!--<button class="hiButton">Hi</button>-->
                 <div class="backbone"></div>

@@ -9,6 +9,12 @@ $(document).click(function(event) {
 });
 // End Menu
 
-$(".js-navigation").on( "click", function() {
-    alert('hi testssss');
+$(window).scroll(function() {
+    var scroll = $(window).scrollTop();
+
+    if (scroll >= 100) {
+        $(".js-navigation").addClass("navigation--nav-color-two");
+    } else {
+        $(".js-navigation").removeClass("navigation--nav-color-two");
+    }
 });

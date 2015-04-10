@@ -1,24 +1,36 @@
-$navColor: #3A1A05; // nav bar
+$navColorMobile: #353333;
+$navColor: transparent; // nav bar
+$navColor2: #353333; // nav bar
+//$navColor: #3A1A05; // nav bar
 $navTextColor: #F7F1EC; // nav text
+//$navTextColor2: #554E49; // nav text
 $navButtonColor: #F7F1EC; // button
 $navTextHoverColor: #554E49; // drop down hover
-$navBorder: 1px solid #F7F1EC; // drop down borders
+$navBorder: 1px solid rgba(225, 219, 214, 0.42); // drop down borders
 $navMinHeight: 54px;
 $navZIndex: 9999;
 
+//rgba(255, 0, 0, 0.4);
+
 //todo bem this
 
+//TODO ADD BEM
+
 .navigation {
-    background: $navColor;
+
+    @if variable-exists(navColorMobile) {
+        background: $navColorMobile;
+    }
     width:100%;
     min-height: $navMinHeight;
     display:block;
     box-sizing: border-box;
     line-height:20px;
     z-index: $navZIndex;
-        position:fixed; //if you want a fixed header
+    position:fixed; //if you want a fixed header
+    border-bottom: $navBorder;
 
-    .navbar-header {
+    &__header {
         box-sizing: border-box;
         float: left;
         //display: inline-block; //use instead of min-height?
@@ -34,7 +46,17 @@ $navZIndex: 9999;
         }
     }
 
-    nav {
+    @media (#{$bp-larger-than-desktop}) {
+        @if variable-exists(navColor) {
+            background: $navColor;
+        }
+
+        &--nav-color-two {
+            background-color: $navColor2;
+        }
+    }
+
+    &__nav {
         min-height:$navMinHeight;
 
         [type="checkbox"] {
@@ -168,7 +190,15 @@ $navZIndex: 9999;
                         position: absolute;
                         padding: 0px;
                         min-width:150px;
-                        background-color: $navColor;
+
+                        @if variable-exists(navColor) {
+//                            background-color: $navColor;
+                        }
+
+                        .navigation--nav-color-two & {
+                            background-color: $navColor2;
+                        }
+
                     }
 
                     li {
