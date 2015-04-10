@@ -10,12 +10,6 @@ $navBorder: 1px solid rgba(225, 219, 214, 0.42); // drop down borders
 $navMinHeight: 54px;
 $navZIndex: 9999;
 
-//rgba(255, 0, 0, 0.4);
-
-//todo bem this
-
-//TODO ADD BEM
-
 .navigation {
 
     @if variable-exists(navColorMobile) {
