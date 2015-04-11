@@ -1,0 +1,14 @@
+$footerColor: #484646; // footer color
+
+/* Footer
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.footer {
+    background-color: $footerColor;
+    background-size: cover;
+    color: #fff;
+
+    /* Bigger than 750 */
+    @media (#{$bp-larger-than-tablet}) {
+        padding: 15rem 0 8rem;
+    }
+}

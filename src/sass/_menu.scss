@@ -1,6 +1,6 @@
 $navColorMobile: #353333;
 $navColor: transparent; // nav bar
-$navColor2: #353333; // nav bar
+$navColor2: #484646; // nav bar
 //$navColor: #3A1A05; // nav bar
 $navTextColor: #F7F1EC; // nav text
 //$navTextColor2: #554E49; // nav text
@@ -186,7 +186,7 @@ $navZIndex: 9999;
                         min-width:150px;
 
                         @if variable-exists(navColor) {
-//                            background-color: $navColor;
+                            background-color: $navColor;
                         }
 
                         .navigation--nav-color-two & {
