@@ -1,4 +1,4 @@
-$heroFontColor: #fcfbf3; // hero text
+$heroFontColor: #f6faf6; // hero text
 
 /* Shared
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -50,15 +50,17 @@ $heroFontColor: #fcfbf3; // hero text
 .hero {
 //    background-color: #F7F1EC;
 //    background-image: url('../images/values-bg.jpg');
-    background: url("../images/splash.jpg") no-repeat fixed left center/cover #424141;
+    background: url("../images/stmarys.jpg") no-repeat fixed center center/cover #424141;
 //    background-size: cover;
 
+//    font-family: $font-family;
+    font-family: "source_sans", "Lucida Grande", "Lucida Sans", sans-serif;
     color: $heroFontColor;
 
     /* Bigger than 550 */
     @media (#{$bp-larger-than-phablet}) {
         padding-bottom: 12rem;
-//      text-align: left;
+        text-align: left;
         height: 165px;
     }
 
@@ -152,14 +154,14 @@ $heroFontColor: #fcfbf3; // hero text
 .values {
 //    background-image: url('../images/values-bg.jpg');
 //    background-color: #DFECFD;
-    background-color: #fefef6;
+    background-color: #ededf4;
     background-size: cover;
-    color: #464646;
+    color: #4d4d4d;
 //    background-color: #587DD9;
 }
 .value-multiplier {
     margin-bottom: .5rem;
-    color: #11DFC7;
+    color: #141216;
 }
 .value-heading {
     margin-bottom: .3rem;
@@ -174,15 +176,31 @@ $heroFontColor: #fcfbf3; // hero text
 .get-help {
 //    border-bottom: 1px solid #ddd;
 //    background-color: #A5BCF4;
-    background-color: #c1d2fc;
+    background-color: #ededf4;
+
+
+    h3 {
+        color: #141216;
+    }
+
+    p {
+        color: #4d4d4d;
+    }
 }
 
 /* Categories
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .categories {
-    background-color: #587DD9;
+    background-color: #1d1e1e;
     background-size: cover;
-    color: #fff;
+
+
+    h3 {
+        color: #f8f8f8;
+    }
+    p {
+        color: #b9b9b9;
+    }
 
     /* Bigger than 750 */
     @media (#{$bp-larger-than-tablet}) {

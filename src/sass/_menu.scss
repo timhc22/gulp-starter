@@ -1,6 +1,6 @@
-$navColorMobile: #353333;
-$navColor: transparent; // nav bar
-$navColor2: #484646; // nav bar
+$navColorMobile: #0f0d0d;
+$navColor: rgba(19, 17, 17, 0.67); // nav bar
+$navColor2: rgba(19, 17, 17, 0.67); // nav bar
 //$navColor: #3A1A05; // nav bar
 $navTextColor: #F7F1EC; // nav text
 //$navTextColor2: #554E49; // nav text
@@ -36,8 +36,14 @@ $navZIndex: 9999;
             font-size: 30px;
             font-weight: bold;
             color: $navTextColor;
-            padding: 20px 0px 0px 0px;
+            padding: 13px;
+            background-color: black;
         }
+    }
+
+    &__header-logo {
+        width: 30px;
+        height: 30px;
     }
 
     @media (#{$bp-larger-than-desktop}) {
@@ -99,7 +105,7 @@ $navZIndex: 9999;
             margin: 20px 0px 20px 0px;
             list-style: none;
             display: none;
-            float:right;
+            float:left;
             width:100%;
             position: relative;
             z-index: $navZIndex;
