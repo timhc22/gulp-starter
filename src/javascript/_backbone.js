@@ -16,6 +16,8 @@ Backbone.LocalStorage = require("backbone.localstorage");
 
 $(function()
 {
+    'use strict';
+
     var App = {}; // create namespace for our app
 
     //--------------
@@ -25,6 +27,9 @@ $(function()
         defaults: {
             title: '',
             completed: false
+        },
+        toggle: function(){
+            this.save({ completed: !this.get('completed')});
         }
     });
 
@@ -49,7 +54,41 @@ $(function()
         template: _.template($('.js-item-template').html()),
         render: function(){
             this.$el.html(this.template(this.model.toJSON()));
+            this.input = this.$('.edit');
             return this; // enable chained calls
+        },
+        initialize: function(){
+            this.model.on('change', this.render, this);
+            this.model.on('destroy', this.remove, this); //remove: convenience backbone
+        },
+        events: {
+            'dblclick label' : 'edit',
+            'keypress .edit' : 'updateOnEnter',
+            'blur .edit' : 'close',
+            'click .toggle': 'toggleCompleted',
+            'click .destroy': 'destroy'
+        },
+        edit: function(){
+            this.$el.addClass('editing');
+            this.input.focus();
+        },
+        close: function(){
+            var value = this.input.val().trim();
+            if (value) {
+                this.model.save({title: value});
+            }
+            this.$el.removeClass('editing');
+        },
+        updateOnEnter: function(e){
+            if(e.which == 13){
+                this.close();
+            }
+        },
+        toggleCompleted: function(){
+            this.model.toggle();
+        },
+        destroy: function(){
+            this.model.destroy();
         }
     });
 
@@ -63,13 +102,12 @@ $(function()
             //Also called bind. It binds an object to an event and a callback.
             // When that event it’s triggered it executes the callback.
             //object.on(event, callback, [context])
-            App.todoList.on('add', this.addOne, this);
+            App.todoList.on('add', this.addAll, this); //also works with addOne (todo which is better?)
             App.todoList.on('reset', this.addAll, this);
             App.todoList.fetch(); // Loads list from local storage
         },
         events: {
-            'keypress .js-new-todo': 'createTodoOnEnter',
-            'click .js-clear-todos': 'clearList'
+            'keypress .js-new-todo': 'createTodoOnEnter'
         },
         createTodoOnEnter: function(e){
             if ( e.which !== 13 || !this.input.val().trim() ) { // ENTER_KEY = 13
@@ -77,11 +115,6 @@ $(function()
             }
             App.todoList.create(this.newAttributes());
             this.input.val(''); // clean input box
-        },
-        clearList: function(e){
-            //alert('hi');
-            //App.todoList.create(this.newAttributes());
-            //this.input.val(''); // clean input box
         },
         addOne: function(todo){
             var view = new App.TodoView({model: todo});

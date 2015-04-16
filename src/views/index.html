@@ -8,6 +8,27 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+    <style>
+        #todoapp ul {
+            list-style-type: none;
+        }
+
+        #todoapp ul li {
+        }
+
+        #todo-list input.edit {
+            display: none;
+        }
+
+        #todo-list .editing label {
+            display: none; /* hide when editing */
+        }
+
+        #todo-list .editing input.edit {
+            display: inline; /* Shows input text box when .editing*/
+        }
+    </style>
+
     <!-- Mobile Specific Metas
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -45,22 +66,23 @@
             <!--</div>-->
         <!--</script>-->
 
-        <section class="js-todoapp">
+        <section id="todoapp" class="js-todoapp">
             <header id="header">
                 <h1>Todos</h1>
                 <input class="js-new-todo" placeholder="What needs to be done?">
-                <button class="js-clear-todos">Clear</button>
             </header>
             <section id="main">
-                <ul class="js-todo-list" style="list-style-type:none; float:left;"></ul>
+                <ul id="todo-list" class="js-todo-list"></ul>
             </section>
         </section>
 
         <!-- template for each li in todolist -->
         <script type="text/template" class="js-item-template">
             <div class="view">
-                <input class="toggle" type="checkbox" style="float:left;">
-                <label style="float:left"><%- title %></label>
+                <input class="toggle" type="checkbox" <%= completed ? 'checked' : '' %>>
+                <label><%- title %></label>
+                <input class="edit" value="<%- title %>">
+                <button class="destroy">remove</button>
             </div>
         </script>
 
