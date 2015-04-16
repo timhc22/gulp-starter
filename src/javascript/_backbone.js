@@ -34,31 +34,68 @@ $(function()
     app.todoList = new app.TodoList();
 
 
+    // renders individual todo items list (li)
+    app.TodoView = Backbone.View.extend({
+        tagName: 'li',
+        template: _.template($('#item-template').html()),
+        render: function(){
+            this.$el.html(this.template(this.model.toJSON()));
+            return this; // enable chained calls
+        }
+    });
 
-    var todoList = new app.TodoList();
-    todoList.create({title: 'Learn Backbone\'s Collection'}); // notice: that `completed` will be set to false by default.
-    var lmodel = new app.Todo({title: 'Learn Models', completed: true});
-    todoList.add(lmodel);
-    console.log(todoList.pluck('title'));     // ["Learn Backbone's Collection", "Learn Models"]
-    console.log(todoList.pluck('completed')); // [false, true]
-    console.log(JSON.stringify(todoList));    // "[{"title":"Learn Backbone's Collection","completed":false,"id":"d9763e99-2267-75f5-62c3-9d7e40742aa6"},{"title":"Learn Models","completed":true}]"
+
+    // renders the full list of todo items calling TodoView for each one.
+    app.AppView = Backbone.View.extend({
+        el: '#todoapp',
+        initialize: function () {
+            this.input = this.$('#new-todo');
+            // when new elements are added to the collection render then with addOne
+            app.todoList.on('add', this.addOne, this);
+            app.todoList.on('reset', this.addAll, this);
+            app.todoList.fetch(); // Loads list from local storage
+        },
+        events: {
+            'keypress #new-todo': 'createTodoOnEnter'
+        },
+        createTodoOnEnter: function(e){
+            if ( e.which !== 13 || !this.input.val().trim() ) { // ENTER_KEY = 13
+                return;
+            }
+            app.todoList.create(this.newAttributes());
+            this.input.val(''); // clean input box
+        },
+        addOne: function(todo){
+            var view = new app.TodoView({model: todo});
+            $('#todo-list').append(view.render().el);
+        },
+        addAll: function(){
+            this.$('#todo-list').html(''); // clean the todo list
+            app.todoList.each(this.addOne, this);
+        },
+        newAttributes: function(){
+            return {
+                title: this.input.val().trim(),
+                completed: false
+            }
+        }
+    });
+
+    //--------------
+    // Initializers
+    //--------------
+
+    app.appView = new app.AppView();
 
 
-    //var AppView = Backbone.View.extend({
-    //    el: $('#container'),
-    //    // template which has the placeholder 'who' to be substitute later
-    //    template: _.template("<h3>Hello <%= who %></h3>"),
-    //    initialize: function(){
-    //        this.render();
-    //    },
-    //    render: function(){
-    //        // render the function using substituting the varible 'who' for 'world!'.
-    //        this.$el.html(this.template({who: 'worlds!'}));
-    //        //***Try putting your name instead of world.
-    //    }
-    //});
+    var todo = new app.Todo({title: 'Learn Backbone.js', completed: false}); // create object with the attributes specified.
+    todo.get('title'); // "Learn Backbone.js"
+    todo.get('completed'); // false
+    todo.get('created_at'); // undefined
+    todo.set('created_at', Date());
+    todo.get('created_at'); // "Wed Sep 12 2012 12:51:17 GMT-0400 (EDT)"
 
-    //var appView = new AppView();
+    var view = new app.TodoView({model: todo});
 
     window.app = app; //so can use in console
 });

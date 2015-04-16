@@ -51,9 +51,16 @@
                 <input id="new-todo" placeholder="What needs to be done?">
             </header>
             <section id="main">
-                <ul id="todo-list"></ul>
+                <ul id="todo-list" style="list-style-type:none; float:left;"></ul>
             </section>
         </section>
+
+        <script type="text/template" id="item-template">
+            <div class="view">
+                <input class="toggle" type="checkbox" style="float:left;">
+                <label style="float:left"><%- title %></label>
+            </div>
+        </script>
 
     </div>
 </div>
