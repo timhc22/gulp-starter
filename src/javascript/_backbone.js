@@ -18,6 +18,9 @@ $(function()
 {
     var App = {}; // create namespace for our app
 
+    //--------------
+    // Models
+    //--------------
     App.Todo = Backbone.Model.extend({
         defaults: {
             title: '',
@@ -25,6 +28,9 @@ $(function()
         }
     });
 
+    //--------------
+    // Collections
+    //--------------
     App.TodoList = Backbone.Collection.extend({
         model: App.Todo,
         localStorage: new Store("backbone-todo")
@@ -33,6 +39,9 @@ $(function()
     // instance of the Collection
     App.todoList = new App.TodoList();
 
+    //--------------
+    // Views
+    //--------------
 
     // renders individual todo items list (li)
     App.TodoView = Backbone.View.extend({
@@ -51,6 +60,9 @@ $(function()
         initialize: function () {
             this.input = this.$('.js-new-todo');
             // when new elements are added to the collection render then with addOne
+            //Also called bind. It binds an object to an event and a callback.
+            // When that event it’s triggered it executes the callback.
+            //object.on(event, callback, [context])
             App.todoList.on('add', this.addOne, this);
             App.todoList.on('reset', this.addAll, this);
             App.todoList.fetch(); // Loads list from local storage
