@@ -5,29 +5,60 @@
 // file use the jquery module bundled with global.js, instead of including it twice!
 
 var $ = require('jquery');
-var _ = require('underscore');
+var _ = require('underscore'); //todo is this going to work? i.e. require uses backbone/underscore
 var Backbone = require('backbone');
-//var LocalStorage = require('backbone-localstorage');
 Backbone.$ = $;
-//LocalStorage.Backbone = Backbone;
+Backbone.LocalStorage = require("backbone.localstorage");
 
+
+//todo module.exports
 //_.templateSettings = { interpolate : /\{\{(.+?)\}\}/g };
 
 $(function()
 {
-    var AppView = Backbone.View.extend({
-        el: $('#container'),
-        // template which has the placeholder 'who' to be substitute later
-        template: _.template("<h3>Hello <%= who %></h3>"),
-        initialize: function(){
-            this.render();
-        },
-        render: function(){
-            // render the function using substituting the varible 'who' for 'world!'.
-            this.$el.html(this.template({who: 'worlds!'}));
-            //***Try putting your name instead of world.
+    var app = {}; // create namespace for our app
+
+    app.Todo = Backbone.Model.extend({
+        defaults: {
+            title: '',
+            completed: false
         }
     });
 
-    var appView = new AppView();
+    app.TodoList = Backbone.Collection.extend({
+        model: app.Todo,
+        localStorage: new Store("backbone-todo")
+    });
+
+    // instance of the Collection
+    app.todoList = new app.TodoList();
+
+
+
+    var todoList = new app.TodoList();
+    todoList.create({title: 'Learn Backbone\'s Collection'}); // notice: that `completed` will be set to false by default.
+    var lmodel = new app.Todo({title: 'Learn Models', completed: true});
+    todoList.add(lmodel);
+    console.log(todoList.pluck('title'));     // ["Learn Backbone's Collection", "Learn Models"]
+    console.log(todoList.pluck('completed')); // [false, true]
+    console.log(JSON.stringify(todoList));    // "[{"title":"Learn Backbone's Collection","completed":false,"id":"d9763e99-2267-75f5-62c3-9d7e40742aa6"},{"title":"Learn Models","completed":true}]"
+
+
+    //var AppView = Backbone.View.extend({
+    //    el: $('#container'),
+    //    // template which has the placeholder 'who' to be substitute later
+    //    template: _.template("<h3>Hello <%= who %></h3>"),
+    //    initialize: function(){
+    //        this.render();
+    //    },
+    //    render: function(){
+    //        // render the function using substituting the varible 'who' for 'world!'.
+    //        this.$el.html(this.template({who: 'worlds!'}));
+    //        //***Try putting your name instead of world.
+    //    }
+    //});
+
+    //var appView = new AppView();
+
+    window.app = app; //so can use in console
 });
