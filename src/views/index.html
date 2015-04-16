@@ -45,17 +45,19 @@
             <!--</div>-->
         <!--</script>-->
 
-        <section id="todoapp">
+        <section class="js-todoapp">
             <header id="header">
                 <h1>Todos</h1>
-                <input id="new-todo" placeholder="What needs to be done?">
+                <input class="js-new-todo" placeholder="What needs to be done?">
+                <button class="js-clear-todos">Clear</button>
             </header>
             <section id="main">
-                <ul id="todo-list" style="list-style-type:none; float:left;"></ul>
+                <ul class="js-todo-list" style="list-style-type:none; float:left;"></ul>
             </section>
         </section>
 
-        <script type="text/template" id="item-template">
+        <!-- template for each li in todolist -->
+        <script type="text/template" class="js-item-template">
             <div class="view">
                 <input class="toggle" type="checkbox" style="float:left;">
                 <label style="float:left"><%- title %></label>

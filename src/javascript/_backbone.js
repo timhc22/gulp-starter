@@ -16,28 +16,28 @@ Backbone.LocalStorage = require("backbone.localstorage");
 
 $(function()
 {
-    var app = {}; // create namespace for our app
+    var App = {}; // create namespace for our app
 
-    app.Todo = Backbone.Model.extend({
+    App.Todo = Backbone.Model.extend({
         defaults: {
             title: '',
             completed: false
         }
     });
 
-    app.TodoList = Backbone.Collection.extend({
-        model: app.Todo,
+    App.TodoList = Backbone.Collection.extend({
+        model: App.Todo,
         localStorage: new Store("backbone-todo")
     });
 
     // instance of the Collection
-    app.todoList = new app.TodoList();
+    App.todoList = new App.TodoList();
 
 
     // renders individual todo items list (li)
-    app.TodoView = Backbone.View.extend({
+    App.TodoView = Backbone.View.extend({
         tagName: 'li',
-        template: _.template($('#item-template').html()),
+        template: _.template($('.js-item-template').html()),
         render: function(){
             this.$el.html(this.template(this.model.toJSON()));
             return this; // enable chained calls
@@ -46,32 +46,38 @@ $(function()
 
 
     // renders the full list of todo items calling TodoView for each one.
-    app.AppView = Backbone.View.extend({
-        el: '#todoapp',
+    App.AppView = Backbone.View.extend({
+        el: '.js-todoapp',
         initialize: function () {
-            this.input = this.$('#new-todo');
+            this.input = this.$('.js-new-todo');
             // when new elements are added to the collection render then with addOne
-            app.todoList.on('add', this.addOne, this);
-            app.todoList.on('reset', this.addAll, this);
-            app.todoList.fetch(); // Loads list from local storage
+            App.todoList.on('add', this.addOne, this);
+            App.todoList.on('reset', this.addAll, this);
+            App.todoList.fetch(); // Loads list from local storage
         },
         events: {
-            'keypress #new-todo': 'createTodoOnEnter'
+            'keypress .js-new-todo': 'createTodoOnEnter',
+            'click .js-clear-todos': 'clearList'
         },
         createTodoOnEnter: function(e){
             if ( e.which !== 13 || !this.input.val().trim() ) { // ENTER_KEY = 13
                 return;
             }
-            app.todoList.create(this.newAttributes());
+            App.todoList.create(this.newAttributes());
             this.input.val(''); // clean input box
         },
+        clearList: function(e){
+            //alert('hi');
+            //App.todoList.create(this.newAttributes());
+            //this.input.val(''); // clean input box
+        },
         addOne: function(todo){
-            var view = new app.TodoView({model: todo});
-            $('#todo-list').append(view.render().el);
+            var view = new App.TodoView({model: todo});
+            $('.js-todo-list').append(view.render().el);
         },
         addAll: function(){
-            this.$('#todo-list').html(''); // clean the todo list
-            app.todoList.each(this.addOne, this);
+            this.$('.js-todo-list').html(''); // clean the todo list
+            App.todoList.each(this.addOne, this);
         },
         newAttributes: function(){
             return {
@@ -85,17 +91,17 @@ $(function()
     // Initializers
     //--------------
 
-    app.appView = new app.AppView();
+    App.appView = new App.AppView();
 
 
-    var todo = new app.Todo({title: 'Learn Backbone.js', completed: false}); // create object with the attributes specified.
-    todo.get('title'); // "Learn Backbone.js"
-    todo.get('completed'); // false
-    todo.get('created_at'); // undefined
-    todo.set('created_at', Date());
-    todo.get('created_at'); // "Wed Sep 12 2012 12:51:17 GMT-0400 (EDT)"
+    //var todo = new app.Todo({title: 'Learn Backbone.js', completed: false}); // create object with the attributes specified.
+    //todo.get('title'); // "Learn Backbone.js"
+    //todo.get('completed'); // false
+    //todo.get('created_at'); // undefined
+    //todo.set('created_at', Date());
+    //todo.get('created_at'); // "Wed Sep 12 2012 12:51:17 GMT-0400 (EDT)"
 
-    var view = new app.TodoView({model: todo});
+    //var view = new app.TodoView({model: todo});
 
-    window.app = app; //so can use in console
+    window.App = App; //so can use in console
 });
