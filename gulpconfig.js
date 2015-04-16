@@ -46,7 +46,7 @@ module.exports = {
                 // list of externally available modules to exclude from the bundle
                 //external: ['jquery', 'underscore']
                 // list of modules to make require-able externally
-                require: ['jquery', 'backbone/node_modules/underscore', 'backbone']
+                require: ['jquery', 'backbone/node_modules/underscore', 'backbone', 'backbone-localstorage']
             }
         ]
     },
