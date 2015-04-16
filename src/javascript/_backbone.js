@@ -38,7 +38,15 @@ $(function()
     //--------------
     App.TodoList = Backbone.Collection.extend({
         model: App.Todo,
-        localStorage: new Store("backbone-todo")
+        localStorage: new Store("backbone-todo"),
+        completed: function() {
+            return this.filter(function( todo ) {
+                return todo.get('completed');
+            });
+        },
+        remaining: function() {
+            return this.without.apply( this, this.completed() );
+        }
     });
 
     // instance of the Collection
@@ -122,7 +130,18 @@ $(function()
         },
         addAll: function(){
             this.$('.js-todo-list').html(''); // clean the todo list
-            App.todoList.each(this.addOne, this);
+            // filter todo item list
+            switch(window.filter) {
+                case 'pending':
+                    _.each(App.todoList.remaining(), this.addOne);
+                    break;
+                case 'completed':
+                    _.each(App.todoList.completed(), this.addOne);
+                    break;
+                default:
+                    App.todoList.each(this.addOne, this);
+                    break;
+            }
         },
         newAttributes: function(){
             return {
@@ -133,8 +152,26 @@ $(function()
     });
 
     //--------------
+    // Routes
+    //--------------
+    App.Router = Backbone.Router.extend({
+        routes: {
+            '*filter' : 'setFilter'
+        },
+        setFilter: function(params) {
+            console.log('App.router.params = ' + params); // just for didactical purposes.
+            //window.filter = params.trim() || '';
+            window.filter = params && params.trim ? params.trim() : '';
+            App.todoList.trigger('reset');
+        }
+    });
+
+    //--------------
     // Initializers
     //--------------
+
+    App.router = new App.Router();
+    Backbone.history.start();
 
     App.appView = new App.AppView();
 
