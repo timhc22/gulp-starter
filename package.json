@@ -72,6 +72,7 @@
   },
   "dependencies": {
     "backbone": "~1.1.2",
+    "backbone.localstorage": "^1.1.16",
     "font-awesome": "^4.3.0",
     "jquery": "~2.1.0"
   }
