@@ -11,6 +11,8 @@ var gulp            = require('gulp'),
     size            = require('gulp-filesize'),
     browserSync     = require('browser-sync'),
     sass            = require('gulp-sass'),
+    template        = require('gulp-template-compile'),
+    concat          = require('gulp-concat'),
     sourcemaps      = require('gulp-sourcemaps'),
     autoprefixer    = require('gulp-autoprefixer'),
     uglify          = require('gulp-uglify'),
@@ -23,7 +25,7 @@ var gulp            = require('gulp'),
 
 var config          = require('./gulpconfig');
 
-gulp.task('default', ['sass', 'images', 'markup', 'watch']);
+gulp.task('default', ['sass', 'images', 'markup', 'compileTemplates', 'watch']);
 
 gulp.task('sass', function () {
     return gulp.src(config.sass.src)
@@ -64,6 +66,15 @@ gulp.task('minifyCss', ['sass'], function() {
         .pipe(size());
 });
 
+gulp.task('compileTemplates', function () {
+    //console.log('here');
+    //return enables a stream, so other tasks know it is finished?
+    return gulp.src(config.templates.src)
+        .pipe(template())
+        .pipe(concat('_templates.js'))
+        .pipe(gulp.dest(config.templates.dest));
+});
+
 gulp.task('uglifyJs', ['browserify'], function() {
     return gulp.src(config.production.jsSrc)
         .pipe(uglify())
@@ -74,7 +85,7 @@ gulp.task('uglifyJs', ['browserify'], function() {
 gulp.task('watch', ['watchify','browserSync'], function() {
     gulp.watch(config.sass.src,   ['sass']);
     gulp.watch(config.images.src, ['images']);
-    gulp.watch(config.markup.src, ['markup']);
+    gulp.watch(config.markup.src, ['compileTemplates', 'markup']);
     // Watchify will watch and recompile our JS, so no need to gulp.watch it
 });
 

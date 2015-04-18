@@ -21,9 +21,16 @@ module.exports = {
         src: SRC + "/images/**",
         dest: DEST + "/images"
     },
+    //todo currently templates are in js and in html format (if using JST)
     markup: {
         src: SRC + "/views/**",
         dest: DEST
+    },
+    //compiled js file with html templates
+    templates: {
+        src: SRC + '/views/*.html',
+        dest: SRC + "/javascript" //if needs to be added to functions.js for use with browserify
+        //dest: DEST + "/templates" //if needs to be included separately
     },
     browserify: {
         // A separate bundle will be generated for each bundle config in the list below
@@ -54,6 +61,7 @@ module.exports = {
     production: {
         cssSrc: DEST + '/css/*.css',
         jsSrc: DEST + '/js/*.js',
+        //htmlSrc: DEST + '/templates/*.js', //todo needed?
         dest: DEST
     }
 };
