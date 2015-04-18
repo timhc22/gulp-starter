@@ -21,12 +21,13 @@ module.exports = {
         src: SRC + "/images/**",
         dest: DEST + "/images"
     },
-    //todo currently templates are in js and in html format (if using JST)
+    //TODO CURRENTLY TEMPLATES ARE IN JS AND HTML FORMAT (WHEN USING JST)
     markup: {
         src: SRC + "/views/**",
         dest: DEST
     },
     //compiled js file with html templates
+    //TODO CURRENTLY TEMPLATES ARE IN JS AND HTML FORMAT (WHEN USING JST)
     templates: {
         src: SRC + '/views/*.html',
         dest: SRC + "/javascript" //if needs to be added to functions.js for use with browserify
