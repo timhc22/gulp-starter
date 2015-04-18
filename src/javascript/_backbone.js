@@ -9,6 +9,7 @@ var _ = require('underscore'); //todo is this going to work? i.e. require uses b
 var Backbone = require('backbone');
 Backbone.$ = $;
 Backbone.LocalStorage = require("backbone.localstorage");
+var JST = require('./_templates');
 
 
 //todo module.exports
@@ -56,10 +57,31 @@ $(function()
     // Views
     //--------------
 
+    App.HeaderView = Backbone.View.extend({
+        el: '#headerContent',
+        //template: window["JST"]["test.html"],
+        template: JST['header.html'](),
+        //template: _.template("<h1>Some text</h1>"),
+
+        initialize: function () {
+            this.render();
+        },
+
+        render: function() {
+            //var html = this.template();
+            //// Append the result to the view's element.
+            //$(this.el).append(html);
+            this.$el.html(this.template());
+            return this; // enable chained calls
+        }
+    });
+
+
     // renders individual todo items list (li)
     App.TodoView = Backbone.View.extend({
         tagName: 'li',
         template: _.template($('.js-item-template').html()),
+        //template: window.JST['views/_todo.html'](),
         render: function(){
             this.$el.html(this.template(this.model.toJSON()));
             this.input = this.$('.edit');
@@ -174,6 +196,7 @@ $(function()
     Backbone.history.start();
 
     App.appView = new App.AppView();
+    App.headerView = new App.HeaderView();
 
 
     //var todo = new app.Todo({title: 'Learn Backbone.js', completed: false}); // create object with the attributes specified.

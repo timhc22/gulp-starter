@@ -49,22 +49,15 @@
 <body>
 
 
-<div id="headerContent"></div>
+<div id="headerContent" class="headerContent">hi</div>
+
+<div id="pageContent"></div>
 
 <!--<div id="pageContent"></div>-->
 
 <div class="section get-help">
     <div class="container">
-        <!--<h3 class="section-heading">To Dos</h3>-->
 
-        <!--<div id="todo">-->
-        <!--</div>-->
-        <!--<script type="text/template" id="item-template">-->
-            <!--<div>-->
-                <!--<input id="todo_complete" type="checkbox" <%= completed ? 'checked="checked"' : '' %>>-->
-                <!--<%= title %>-->
-            <!--</div>-->
-        <!--</script>-->
 
         <section id="todoapp" class="js-todoapp">
             <header id="header">
@@ -80,7 +73,6 @@
                 <ul id="todo-list" class="js-todo-list"></ul>
             </section>
         </section>
-
         <!-- template for each li in todolist -->
         <script type="text/template" class="js-item-template">
             <div class="view">
@@ -94,7 +86,6 @@
     </div>
 </div>
 
-
 <div id="footerContent"></div>
 
 
@@ -103,6 +94,7 @@
 
 <!-- JS
 –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<script src="templates/_templates.js"></script>
 <script src="js/functions.js"></script>
 </body>
 </html>
