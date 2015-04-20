@@ -10,7 +10,7 @@ var Backbone = require('backbone');
 Backbone.$ = $;
 Backbone.LocalStorage = require("backbone.localstorage");
 
-require('./_templates'); //include JST templates (gitignored) doesn't work if assign to a variable
+require('./_JSTtemplates'); //include JST templates (gitignored) doesn't work if assign to a variable
 
 //todo module.exports
 //_.templateSettings = { interpolate : /\{\{(.+?)\}\}/g };
