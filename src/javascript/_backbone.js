@@ -165,7 +165,10 @@ $(function()
             App.todoList.fetch(); // Loads list from local storage
         },
         events: {
-            'keypress .js-new-todo': 'createTodoOnEnter'
+            'keypress .js-new-todo': 'createTodoOnEnter',
+            //'click .js-route-home': 'routeHome',
+            //'click .js-route-pending': 'routePending',
+            //'click .js-route-completed': 'routeCompleted'
         },
         createTodoOnEnter: function(e){
             if ( e.which !== 13 || !this.input.val().trim() ) { // ENTER_KEY = 13
@@ -198,7 +201,16 @@ $(function()
                 title: this.input.val().trim(),
                 completed: false
             }
-        }
+        },
+        //routeHome: function(){
+        //    App.router.navigate("/", true)
+        //},
+        //routePending: function(){
+        //    App.router.navigate("/pending", true)
+        //},
+        //routeCompleted: function(){
+        //    App.router.navigate("/completed", true)
+        //}
     });
 
     //--------------
@@ -220,6 +232,7 @@ $(function()
     //--------------
     App.router = new App.Router();
     Backbone.history.start();
+    //Backbone.history.start({pushState: true});
 
     App.headerView = new App.HeaderView();
     App.footerView = new App.FooterView();
