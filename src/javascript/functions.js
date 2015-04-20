@@ -8,5 +8,5 @@ require('./_frontpage');
 require('./_various');
 
 $("#headerContent").load("header.html");
-$("#pageContent").load("frontpage.html");
+$("#pageContent").load("_frontpage.html");
 $("#footerContent").load("footer.html");
