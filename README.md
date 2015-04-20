@@ -6,10 +6,9 @@ The immediate compilation of sass files and auto browser reloading is excellent!
 
 ### ToDo
 
-Combine js files
-bem the nav
-
-
+* add in backbone (and layout_backbone stuff)
+* sort tests
+* php out of web folder
 
 
 ## Setup (local)
