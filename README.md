@@ -9,6 +9,7 @@ The immediate compilation of sass files and auto browser reloading is excellent!
 * add in backbone (and layout_backbone stuff)
 * sort tests
 * php out of web folder
+* tidy everything
 
 
 ## Setup (local)

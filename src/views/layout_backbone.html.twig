@@ -53,7 +53,7 @@
     %}
     {% endjavascripts %}
     {% if app.debug %}
-        <script type="text/javascript" src="{{ path('home') ~ 'js/compiled/rooted.js?' ~ assets_version }}"></script>
+        <script type="text/javascript" src="{{ path('home') ~ 'js/compiled/project.js?' ~ assets_version }}"></script>
     {% else %}
         <script type="text/javascript" src="{{ asset('js/compiled/rooted.js') }}"></script>
     {% endif %}
