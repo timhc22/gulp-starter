@@ -4,7 +4,7 @@
     <!-- Basic Page Needs
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <meta charset="utf-8">
-    <title>TestSite</title>
+    <title>{% block title %}Test Site{% endblock %}</title>
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -27,13 +27,7 @@
 </head>
 <body>
 
-
-<div id="headerContent"></div>
-
-<div id="pageContent"></div>
-
-<div id="footerContent"></div>
-
+{% block body %}{% endblock %}
 
 <!-- End Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->

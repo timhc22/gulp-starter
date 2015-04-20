@@ -1,0 +1,15 @@
+{# Layout for internal pages (once user has logged in) #}
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="headerContent">
+        {{ include('_header.html.twig') }}
+    </div>
+
+    {% block content '' %}
+
+    <div id="footerContent">
+        {{ include('_footer.html.twig') }}
+    </div>
+{% endblock %}
