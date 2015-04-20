@@ -12,6 +12,31 @@ bem the nav
 
 
 
+## Setup (local)
+
+* Set up virtual hosts to use web/index.php as entry point
+* Copy `config.js.dist` as `config.js` and provide url (this will be used for auto reload)
+
+* Clone repo
+* Copy `config.php.dist` as `config.php` and provide mailer login
+
+* composer install
+* npm install
+
+* gulp
+
+
+
+
+
+
+
+
+``` bash
+# Install Composer for Silex
+$ curl -sS https://getcomposer.org/installer | php
+$ php composer.phar install
+```
 
 Original documentation below:
 
