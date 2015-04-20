@@ -1,0 +1,10 @@
+#todo do we need one of these if the virtualhosts file is set up correctly?
+
+#<IfModule mod_rewrite.c>
+#    Options -MultiViews
+#
+#    RewriteEngine On
+##    RewriteBase /gulp-starter/web/
+#    RewriteCond %{REQUEST_FILENAME} !-f
+#    RewriteRule ^ index.php [L]
+#</IfModule>
