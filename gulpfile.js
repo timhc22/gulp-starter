@@ -45,7 +45,7 @@ gulp.task('production', ['karma'], function(){
 
 gulp.task('markup', function() {
     return gulp.src(config.markup.src)
-        .pipe(gulp.dest(config.markup.dest))
+        //.pipe(gulp.dest(config.markup.dest))
         .pipe(browserSync.reload({stream:true}));
 });
 

@@ -1,12 +1,24 @@
+//include user parameters (may be a better way of importing these)
+var config = require('./config');
+
 var SRC = "./src";
-var DEST = "./build";
+var DEST = "./web";
 
 module.exports = {
     browserSync: {
-        server: {
+        proxy: config.SERVER //user parameter
+        //TODO WHAT DOES THIS DO??
+        //ghostMode: {
+        //    clicks: false,
+        //    location: false,
+        //    forms: false,
+        //    scroll: false
+        //}
+        //server: {
             // Serve up our build folder
-            baseDir: DEST
-        }
+            //baseDir: DEST
+            //baseDir:'.'
+        //}
     },
     sass: {
         src: SRC + "/sass/**/*.{sass,scss}",
