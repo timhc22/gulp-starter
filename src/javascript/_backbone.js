@@ -9,8 +9,8 @@ var _ = require('underscore'); //todo is this going to work? i.e. require uses b
 var Backbone = require('backbone');
 Backbone.$ = $;
 Backbone.LocalStorage = require("backbone.localstorage");
-var JST = require('./_templates');
 
+require('./_templates'); //include JST templates (gitignored) doesn't work if assign to a variable
 
 //todo module.exports
 //_.templateSettings = { interpolate : /\{\{(.+?)\}\}/g };
@@ -57,10 +57,11 @@ $(function()
     // Views
     //--------------
 
+    //header
     App.HeaderView = Backbone.View.extend({
         el: '#headerContent',
-        //template: window["JST"]["test.html"],
-        template: JST['header.html'](),
+        template: JST['_header.html'],
+        //template: JST['_header.html'](data),
         //template: _.template("<h1>Some text</h1>"),
 
         initialize: function () {
@@ -68,20 +69,36 @@ $(function()
         },
 
         render: function() {
-            //var html = this.template();
-            //// Append the result to the view's element.
-            //$(this.el).append(html);
+            this.$el.html(this.template());
+            return this; // enable chained calls
+        }
+    });
+
+    //footer
+    App.FooterView = Backbone.View.extend({
+        el: '#footerContent',
+        template: JST['_footer.html'],
+        //template: JST['_header.html'](data),
+        //template: _.template("<h1>Some text</h1>"),
+
+        initialize: function () {
+            this.render();
+        },
+
+        render: function() {
             this.$el.html(this.template());
             return this; // enable chained calls
         }
     });
 
 
+
+
     // renders individual todo items list (li)
     App.TodoView = Backbone.View.extend({
         tagName: 'li',
         template: _.template($('.js-item-template').html()),
-        //template: window.JST['views/_todo.html'](),
+        //template: JST['_todo.html'],
         render: function(){
             this.$el.html(this.template(this.model.toJSON()));
             this.input = this.$('.edit');
@@ -195,8 +212,10 @@ $(function()
     App.router = new App.Router();
     Backbone.history.start();
 
-    App.appView = new App.AppView();
     App.headerView = new App.HeaderView();
+    App.footerView = new App.FooterView();
+
+    App.appView = new App.AppView();
 
 
     //var todo = new app.Todo({title: 'Learn Backbone.js', completed: false}); // create object with the attributes specified.
