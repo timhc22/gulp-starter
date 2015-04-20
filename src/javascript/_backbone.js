@@ -39,7 +39,7 @@ $(function()
     //--------------
     App.TodoList = Backbone.Collection.extend({
         model: App.Todo,
-        localStorage: new Store("backbone-todo"),
+        localStorage: new Store("backbone-todo"), //App.todoList.fetch() gets from here
         completed: function() {
             return this.filter(function( todo ) {
                 return todo.get('completed');
@@ -78,8 +78,6 @@ $(function()
     App.FooterView = Backbone.View.extend({
         el: '#footerContent',
         template: JST['_footer.html'],
-        //template: JST['_header.html'](data),
-        //template: _.template("<h1>Some text</h1>"),
 
         initialize: function () {
             this.render();
@@ -92,13 +90,27 @@ $(function()
     });
 
 
+    //pageContent
+    App.PageView = Backbone.View.extend({
+        el: '#pageContent',
+        template: JST['_todos.html'],
+
+        initialize: function () {
+            this.render();
+        },
+
+        render: function() {
+            this.$el.html(this.template());
+            return this; // enable chained calls
+        }
+    });
 
 
     // renders individual todo items list (li)
     App.TodoView = Backbone.View.extend({
         tagName: 'li',
-        template: _.template($('.js-item-template').html()),
-        //template: JST['_todo.html'],
+        //template: _.template($('.js-item-template').html()),
+        template: JST['_todo.html'],
         render: function(){
             this.$el.html(this.template(this.model.toJSON()));
             this.input = this.$('.edit');
@@ -116,7 +128,7 @@ $(function()
             'click .destroy': 'destroy'
         },
         edit: function(){
-            this.$el.addClass('editing');
+            this.$el.addClass('editing'); //adds to li element
             this.input.focus();
         },
         close: function(){
@@ -145,9 +157,8 @@ $(function()
         el: '.js-todoapp',
         initialize: function () {
             this.input = this.$('.js-new-todo');
-            // when new elements are added to the collection render then with addOne
-            //Also called bind. It binds an object to an event and a callback.
-            // When that event it’s triggered it executes the callback.
+            // when new elements are added to the collection render then with addOne Also called bind. It binds an
+            // object to an event and a callback. When that event it’s triggered it executes the callback.
             //object.on(event, callback, [context])
             App.todoList.on('add', this.addAll, this); //also works with addOne (todo which is better?)
             App.todoList.on('reset', this.addAll, this);
@@ -164,12 +175,12 @@ $(function()
             this.input.val(''); // clean input box
         },
         addOne: function(todo){
-            var view = new App.TodoView({model: todo});
+            var view = new App.TodoView({model: todo}); //pass todo model into ToDoView
             $('.js-todo-list').append(view.render().el);
         },
         addAll: function(){
             this.$('.js-todo-list').html(''); // clean the todo list
-            // filter todo item list
+            // filter to do item list //window.filter is defined in App.Router
             switch(window.filter) {
                 case 'pending':
                     _.each(App.todoList.remaining(), this.addOne);
@@ -199,7 +210,6 @@ $(function()
         },
         setFilter: function(params) {
             console.log('App.router.params = ' + params); // just for didactical purposes.
-            //window.filter = params.trim() || '';
             window.filter = params && params.trim ? params.trim() : '';
             App.todoList.trigger('reset');
         }
@@ -208,15 +218,14 @@ $(function()
     //--------------
     // Initializers
     //--------------
-
     App.router = new App.Router();
     Backbone.history.start();
 
     App.headerView = new App.HeaderView();
     App.footerView = new App.FooterView();
+    App.pageView = new App.PageView();
 
     App.appView = new App.AppView();
-
 
     //var todo = new app.Todo({title: 'Learn Backbone.js', completed: false}); // create object with the attributes specified.
     //todo.get('title'); // "Learn Backbone.js"
@@ -224,8 +233,6 @@ $(function()
     //todo.get('created_at'); // undefined
     //todo.set('created_at', Date());
     //todo.get('created_at'); // "Wed Sep 12 2012 12:51:17 GMT-0400 (EDT)"
-
-    //var view = new app.TodoView({model: todo});
 
     window.App = App; //so can use in console
 });
