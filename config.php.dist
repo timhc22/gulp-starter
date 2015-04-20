@@ -1,0 +1,8 @@
+<?php
+
+$config = array(
+    'mailer_host' => 'smtp.sendgrid.net',
+    'mailer_user' => '',
+    'mailer_pass' => '',
+    'mailer_port' => '587',
+);

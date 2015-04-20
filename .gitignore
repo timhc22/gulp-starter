@@ -1,6 +1,13 @@
+# / at front or not?
+
 .DS_Store
 .sass-cache
 build
 Desktop.ini
 node_modules
 .idea
+/vendor
+/web/css
+/web/images
+/web/js
+config.js
