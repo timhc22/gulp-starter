@@ -1,0 +1,69 @@
+{% extends 'layout.html.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+
+    {# 1. Vendor JS #}
+    <script type="text/javascript" src="{{ asset('js/jquery/dist/jquery.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/underscore/underscore.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/backbone/backbone.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/backbone-relational/backbone-relational.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/moment/min/moment.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/fullcalendar/dist/fullcalendar.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/bootstrap-datepicker/dist/js/bootstrap-datepicker.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/typeahead.js/dist/typeahead.bundle.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/intl-tel-input/build/js/intlTelInput.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/backbone.trackit.min.js') }}"></script>
+
+
+    {# 2. Html templates #}
+    {% for name in [
+    'gig', 'filters', 'gigfull', 'banner', 'tabs', 'summary', 'venue', 'hotel', 'travel', 'journey', 'editjourney', 'running-order', 'set', 'running-order-edit', 'documents', 'contacts', 'contact', 'editcontact', 'guest-list'
+    ] %}
+        <script type="text/template" id="template-{{ name|replace({'/': ''}) }}">
+            {% include('backbone/_' ~ name|replace({'-': '_'}) ~ '.html.twig') %}
+        </script>
+    {% endfor %}
+
+
+    {# 3. Initialize the app container #}
+    <script type="text/javascript">
+        window.App = {
+            Collections: {},
+            Mixins: {},
+            Models: {},
+            Units: {},
+            Views: {},
+            Routers: {}
+        };
+
+        App.config = {
+            baseUrl: '{{ path('home') }}'
+        }
+    </script>
+
+
+    {# 4. JS classes #}
+    {% javascripts combine=true filter='?yui_js' output='js/compiled/rooted.js'
+    '../app/Resources/assets/js/models/*.js'
+    '../app/Resources/assets/js/collections/*.js'
+    '../app/Resources/assets/js/views/*.js'
+    '../app/Resources/assets/js/routers/*.js'
+    %}
+    {% endjavascripts %}
+    {% if app.debug %}
+        <script type="text/javascript" src="{{ path('home') ~ 'js/compiled/rooted.js?' ~ assets_version }}"></script>
+    {% else %}
+        <script type="text/javascript" src="{{ asset('js/compiled/rooted.js') }}"></script>
+    {% endif %}
+
+
+    {# 5. Kick off the app #}
+    <script type="text/javascript">
+        $(function() {
+            // Backbone.history....
+        });
+    </script>
+
+{% endblock %}

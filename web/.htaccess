@@ -1,4 +1,5 @@
 #todo do we need one of these if the virtualhosts file is set up correctly?
+#todo should this be in folder above?
 
 #<IfModule mod_rewrite.c>
 #    Options -MultiViews
