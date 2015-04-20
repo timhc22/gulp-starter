@@ -1,4 +1,4 @@
-//include user parameters (may be a better way of importing these)
+//include user configs
 var config = require('./config');
 
 var SRC = "./src";

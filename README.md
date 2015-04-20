@@ -10,6 +10,8 @@ The immediate compilation of sass files and auto browser reloading is excellent!
 * sort tests
 * php out of web folder
 * tidy everything
+* icon gulp stuff
+* check gulp branch 2
 
 
 ## Setup (local)
