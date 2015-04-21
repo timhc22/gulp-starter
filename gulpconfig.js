@@ -25,6 +25,21 @@ module.exports = {
         src: SRC + "/views/**",
         dest: DEST
     },
+    iconFonts: {
+        name: 'Gulp Starter Icons',
+        src: SRC + '/icons/*.svg',
+        dest: DEST + '/fonts',
+        sassDest: SRC + '/sass',
+        template: './src/sass/template.sass.swig',
+        sassOutputName: '_AUTOGENicons.sass',
+        fontPath: '../fonts',
+        className: 'icon',
+        options: {
+            fontName: 'Post-Creator-Icons',
+            appendCodepoints: true,
+            normalize: false
+        }
+    },
     browserify: {
         // A separate bundle will be generated for each bundle config in the list below
         bundleConfigs: [

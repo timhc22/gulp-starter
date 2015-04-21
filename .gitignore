@@ -4,3 +4,10 @@ build
 Desktop.ini
 node_modules
 .idea
+/vendor
+/web/css
+/web/images
+/web/js
+/web/fonts
+config.js
+/src/sass/_AUTOGENicons.sass
