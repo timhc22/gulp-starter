@@ -35,5 +35,18 @@
 <!-- JS
 –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 <script src="js/functions.js"></script>
+
+{#todo sort backbone templates#}
+{#{% block backboneTemplates %}#}
+    {#&#123;&#35; 2. Html templates &#35;&#125;#}
+    {#{% for name in [#}
+    {#'template', 'template2'#}
+    {#] %}#}
+        {#<script type="text/template" id="template-{{ name|replace({'/': ''}) }}">#}
+            {#{% include('backbone/_' ~ name|replace({'-': '_'}) ~ '.html.twig') %}#}
+        {#</script>#}
+    {#{% endfor %}#}
+{#{% endblock %}#}
+
 </body>
 </html>

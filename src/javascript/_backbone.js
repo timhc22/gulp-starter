@@ -17,5 +17,17 @@ Backbone.LocalStorage = require("backbone.localstorage");
 $(function()
 {
 
+    //window.App = {
+    //    Collections: {},
+    //    Mixins: {},
+    //    Models: {},
+    //    Units: {},
+    //    Views: {},
+    //    Routers: {}
+    //};
+    //
+    //App.config = {
+    //    baseUrl: '{{ path('home') }}'
+    //}
 
 });
