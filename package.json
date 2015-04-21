@@ -68,7 +68,8 @@
     "watchify": "^2.4.0",
     "gulp-plumber": "^1.0.0",
     "handlebars": "^3.0.0",
-    "coffeeify": "~1.0.0"
+    "coffeeify": "~1.0.0",
+    "gulp-swig": "^0.7.4"
   },
   "dependencies": {
     "backbone": "~1.1.2",
