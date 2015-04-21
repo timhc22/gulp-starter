@@ -81,6 +81,7 @@ module.exports = {
     production: {
         cssSrc: DEST + '/css/*.css',
         jsSrc: DEST + '/js/*.js',
-        dest: DEST
+        cssDest: DEST + '/css',
+        jsDest: DEST + '/js'
     }
 };

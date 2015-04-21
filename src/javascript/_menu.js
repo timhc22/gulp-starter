@@ -9,6 +9,7 @@ $(document).click(function(event) {
 });
 // End Menu
 
+
 $(window).scroll(function() {
     var scroll = $(window).scrollTop();
 

@@ -37,7 +37,7 @@
 <script src="js/functions.js"></script>
 
 {#todo sort backbone templates#}
-{#{% block backboneTemplates %}#}
+{% block backboneTemplates %}
     {#&#123;&#35; 2. Html templates &#35;&#125;#}
     {#{% for name in [#}
     {#'template', 'template2'#}
@@ -46,7 +46,7 @@
             {#{% include('backbone/_' ~ name|replace({'-': '_'}) ~ '.html.twig') %}#}
         {#</script>#}
     {#{% endfor %}#}
-{#{% endblock %}#}
+{% endblock %}
 
 </body>
 </html>

@@ -1,0 +1,18 @@
+#todoapp ul {
+    list-style-type: none;
+}
+
+#todoapp ul li {
+}
+
+#todo-list input.edit {
+    display: none;
+}
+
+#todo-list .editing label {
+    display: none; /* hide when editing */
+}
+
+#todo-list .editing input.edit {
+    display: inline; /* Shows input text box when .editing*/
+}

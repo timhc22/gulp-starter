@@ -63,14 +63,14 @@ gulp.task('images', function() {
 gulp.task('minifyCss', ['sass'], function() {
     return gulp.src(config.production.cssSrc)
         .pipe(minifyCSS({keepBreaks:true}))
-        .pipe(gulp.dest(config.production.dest))
+        .pipe(gulp.dest(config.production.cssDest))
         .pipe(size());
 });
 
 gulp.task('uglifyJs', ['browserify'], function() {
     return gulp.src(config.production.jsSrc)
         .pipe(uglify())
-        .pipe(gulp.dest(config.production.dest))
+        .pipe(gulp.dest(config.production.jsDest))
         .pipe(size());
 });
 
