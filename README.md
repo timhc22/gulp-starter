@@ -11,6 +11,7 @@ The immediate compilation of sass files and auto browser reloading is excellent!
 * php out of web folder
 * tidy everything
 * check gulp branch 2
+* add htmlshiv (and stuff from html5 boilerplate?)
 
 
 ## Setup (local)
