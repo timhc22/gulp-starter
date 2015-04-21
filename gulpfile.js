@@ -46,6 +46,7 @@ gulp.task('production', ['karma'], function(){
     gulp.start(['markup', 'images', 'iconFont', 'minifyCss', 'uglifyJs'])
 });
 
+//TODO    src: ['../*.php', '../inc/*.php', '../templates/*.php']
 gulp.task('markup', function() {
     return gulp.src(config.markup.src)
         //.pipe(gulp.dest(config.markup.dest))
