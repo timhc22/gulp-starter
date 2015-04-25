@@ -102,7 +102,10 @@ gulp.task('watchify', function() {
     return browserifyTask(config.browserify, true);
 });
 
-gulp.task('karma', karmaTask);
+//can run karma start (if installed globally) in terminal and it will autowatch
+gulp.task('karma', function(){
+    return karmaTask();
+});
 
 var karmaTask = function(done) {
     karma.server.start({
