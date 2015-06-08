@@ -38,7 +38,7 @@ $app->get('/{name}', function($name) use ($app) {
         'page_name' => $name,
     ));
 })
-->assert('name', '(web|css3)')
+->assert('name', '(web|css3|react)')
 ->value('name', 'home');
 
 

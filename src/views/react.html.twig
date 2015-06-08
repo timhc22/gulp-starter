@@ -1,0 +1,24 @@
+{% extends 'layout.html.twig' %}
+
+{# TODO DYNAMICALLY GENERATE PAGE NAME #}
+{% block bodyClass %}page-web js-navbar-nochange js-backbone-app {{ parent() }}{% endblock %}
+
+{% block content %}
+<!-- Primary Page Layout
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+    <div class="section get-help">
+        <div class="container">
+
+            <section>
+                <header id="header">
+                </header>
+                <section id="main">
+                    <div id="example"></div>
+                </section>
+            </section>
+
+        </div>
+    </div>
+
+{% endblock %}
