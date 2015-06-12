@@ -1,5 +1,6 @@
 var React = require('react');
 var $ = require('jquery');
+require('jquery.cookie');
 var Marked = require('marked');
 //var reactData = require('./reactData.json');
 
@@ -75,6 +76,7 @@ var CommentBox = React.createClass({
         var newComments = comments.concat([comment]);
         this.setState({data: newComments}); //optimistically update the list
 
+        //$.cookie('XDEBUG_SESSION', 'PHPSTORM', { path: '/' }); //not working
         $.ajax({
             url: this.props.url,
             dataType: 'json',

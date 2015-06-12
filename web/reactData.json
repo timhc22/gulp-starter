@@ -1,5 +1,1 @@
-[
-  {"author": "Pete Hunt", "text": "This is one comment"},
-  {"author": "John Lunt", "text": "This is no comment"},
-  {"author": "Jordan Walke", "text": "This is yet *another* comment"}
-]
+[{"author":"Pete Hunt","text":"This is one comment"},{"author":"John Lunt","text":"This is no comment"},{"author":"Jordan Walke","text":"This is yet *another* comment"},{"author":"test","text":"test"},{"author":"test","text":"testttt"},{"author":"dan ryland","text":"this is *my name*"}]
