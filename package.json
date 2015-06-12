@@ -76,6 +76,7 @@
     "backbone.localstorage": "^1.1.16",
     "font-awesome": "^4.3.0",
     "jquery": "~2.1.0",
+    "marked": "^0.3.3",
     "react": "^0.13.3"
   }
 }
