@@ -46,7 +46,9 @@ var CommentForm = React.createClass({
         return (
             React.createElement('form', {className: "commentForm", onSubmit: this.handleSubmit},
                 React.createElement('input', {type: "text", placeholder: "Your name", ref: "author"}),
+                React.createElement('br', null),
                 React.createElement('input', {type: "text", placeholder: "Say something...", ref: "text"}),
+                React.createElement('br', null),
                 React.createElement('input', {type: "submit", value: "Post"})
             )
         );
@@ -97,8 +99,8 @@ var CommentBox = React.createClass({
         return (
             React.createElement('div', {className: "commentBox"},
                 React.createElement('h1', null, 'Comments'),
-                React.createElement(CommentList, {data: this.state.data}),
-                React.createElement(CommentForm, {onCommentSubmit:this.handleCommentSubmit})
+                React.createElement(CommentForm, {onCommentSubmit:this.handleCommentSubmit}),
+                React.createElement(CommentList, {data: this.state.data})
             )
         );
     }
