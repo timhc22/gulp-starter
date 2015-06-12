@@ -31,6 +31,11 @@ $app->after(function(Request $request, Response $response) {
     $response->setContent($content);
 });
 
+// json data for react
+$app->get('/api/react-data', function (Request $request) use ($app) {
+    return new Response(file_get_contents('reactData.json'), 200, array('Content-Type' => 'application/json'));
+});
+
 
 // Routes
 $app->get('/{name}', function($name) use ($app) {

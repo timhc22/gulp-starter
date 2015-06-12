@@ -1,11 +1,7 @@
 var React = require('react');
+var $ = require('jquery');
 var Marked = require('marked');
-
-var data = [
-    {author: "Pete Hunt", text: "This is one comment"},
-    {author: "Jordan Walke", text: "This is yet *another* comment"}
-];
-
+//var reactData = require('./reactData.json');
 
 var Comment = React.createClass({
     render: function() {
@@ -42,12 +38,32 @@ var CommentForm = React.createClass({
     }
 });
 
-var CommentBox = React.createClass({displayName: 'CommentBox',
+var CommentBox = React.createClass({
+    loadCommentsFromServer: function() {
+        $.ajax({
+            url: this.props.url,
+            dataType: 'json',
+            cache: false,
+            success: function(data) {
+                this.setState({data: data});
+            }.bind(this),
+            error: function(xhr, status, err) {
+                console.error(this.props.url, status, err.toString());
+            }.bind(this)
+        });
+    },
+    getInitialState: function() {
+        return {data: []};
+    },
+    componentDidMount: function() {
+        this.loadCommentsFromServer();
+        setInterval(this.loadCommentsFromServer, this.props.pollInterval);
+    },
     render: function() {
         return (
             React.createElement('div', {className: "commentBox"},
                 React.createElement('h1', null, 'Comments'),
-                React.createElement(CommentList, {data: this.props.data}),
+                React.createElement(CommentList, {data: this.state.data}),
                 React.createElement(CommentForm, null)
             )
         );
@@ -55,6 +71,6 @@ var CommentBox = React.createClass({displayName: 'CommentBox',
 });
 
 React.render(
-    React.createElement(CommentBox, {data: data}),
+    React.createElement(CommentBox, {url: "api/react-data", pollInterval: 2000}),
     document.getElementById('content')
 );
