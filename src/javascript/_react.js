@@ -8,10 +8,12 @@ var Comment = React.createClass({
     render: function() {
         var rawMarkup = Marked(this.props.children.toString(), {sanitize: true});
         return (
-            React.createElement('div', {className: "comment"},
-                React.createElement('h2', {className: "commentAuthor"}, this.props.author),
-                React.createElement('span', {dangerouslySetInnerHTML: {__html: rawMarkup}})
-            )
+            <div className="comment">
+                <h3 className="commentAuthor">
+                    {this.props.author}
+                </h3>
+                <span dangerouslySetInnerHTML={{__html: rawMarkup}} />
+            </div>
         );
     }
 });
@@ -20,11 +22,15 @@ var CommentList = React.createClass({
     render: function() {
         var commentNodes = this.props.data.map(function (comment) {
            return (
-               React.createElement(Comment, {author: comment.author, children: comment.text})
+               <Comment author={comment.author}>
+                   {comment.text}
+               </Comment>
            );
         });
         return (
-            React.createElement('div', {className: "commentList"}, commentNodes)
+            <div className="commentList">
+                {commentNodes}
+            </div>
         );
     }
 });
@@ -45,13 +51,13 @@ var CommentForm = React.createClass({
     },
     render: function() {
         return (
-            React.createElement('form', {className: "commentForm", onSubmit: this.handleSubmit},
-                React.createElement('input', {type: "text", placeholder: "Your name", ref: "author"}),
-                React.createElement('br', null),
-                React.createElement('input', {type: "text", placeholder: "Say something...", ref: "text"}),
-                React.createElement('br', null),
-                React.createElement('input', {type: "submit", value: "Post"})
-            )
+            <form className="commentForm" onSubmit={this.handleSubmit}>
+                <input type="text" placeholder="Your name" ref="author" />
+                <br/>
+                <input type="text" placeholder="Say something..." ref="text" />
+                <br/>
+                <input type="submit" value="Post" />
+            </form>
         );
     }
 });
@@ -99,16 +105,16 @@ var CommentBox = React.createClass({
     },
     render: function() {
         return (
-            React.createElement('div', {className: "commentBox"},
-                React.createElement('h1', null, 'Comments'),
-                React.createElement(CommentForm, {onCommentSubmit:this.handleCommentSubmit}),
-                React.createElement(CommentList, {data: this.state.data})
-            )
+            <div className="commentBox">
+                <h1>Comments</h1>
+                <CommentForm onCommentSubmit={this.handleCommentSubmit} />
+                <CommentList data={this.state.data} />
+            </div>
         );
     }
 });
 
 React.render(
-    React.createElement(CommentBox, {url: "api/react-data", pollInterval: 2000}),
+    <CommentBox url="api/react-data" pollInterval={2000} />,
     document.getElementById('content')
 );

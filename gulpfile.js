@@ -20,6 +20,7 @@ var gulp            = require('gulp'),
     gutil           = require('gulp-util'),
     prettyHrtime    = require('pretty-hrtime'),
     notify          = require("gulp-notify"),
+    reactify        = require('reactify'),
     plumber         = require('gulp-plumber'), //Prevent pipe breaking caused by errors from gulp plugins
     startTime
 ;
