@@ -74,8 +74,9 @@ module.exports = {
                 //external: ['jquery', 'underscore']
                 // list of modules to make require-able externally
                 //todo do i need backbone.localstorage in here?
-                require: ['jquery', 'backbone/node_modules/underscore', 'backbone', 'reactify'],
-                transform: ['reactify']
+                //todo check the requires are definitely not needed (as they are included individually in files)
+                //require: ['jquery', 'backbone/node_modules/underscore', 'backbone'],
+                transform: ['reactify'] //transform JSX
             }
         ]
     },
