@@ -1,4 +1,6 @@
 var React = require('react');
+//todo To use React in production mode, set the environment variable NODE_ENV to production. A minifier that performs dead-code elimination such as UglifyJS is recommended to completely remove the extra code present in development mode.
+
 var $ = require('jquery');
 require('jquery.cookie');
 var Marked = require('marked');
