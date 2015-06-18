@@ -1,11 +1,10 @@
 $navColorMobile: #353333;
 $navColor: transparent; // nav bar
-$navColor2: #484646; // nav bar
-//$navColor: #3A1A05; // nav bar
-$navTextColor: #F7F1EC; // nav text
-//$navTextColor2: #554E49; // nav text
-$navButtonColor: #F7F1EC; // button
-$navTextHoverColor: #7e7c7b; // drop down hover
+$navColor2: #484646; // nav bar for scrolling
+
+$navTextColor: $light-grey; // nav text
+$navButtonColor: $light-grey; // button
+$navTextHoverColor: $dark-grey; // drop down hover
 $navBorder: 1px solid rgba(225, 219, 214, 0.42); // drop down borders
 $navMinHeight: 54px;
 $navZIndex: 9999;
@@ -128,7 +127,7 @@ $navZIndex: 9999;
                 }
 
                 a {
-                    border-bottom: $navBorder; //todo make variable
+                    border-bottom: $navBorder;
                     color: $navTextColor;
                     cursor: pointer;
                     display: block;
