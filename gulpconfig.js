@@ -42,8 +42,8 @@ module.exports = {
         src: SRC + '/icons/*.svg',
         dest: DEST + '/fonts',
         sassDest: SRC + '/sass',
-        template: './src/sass/template.sass.swig',
-        sassOutputName: '_AUTOGENicons.sass',
+        template: './src/sass/various/template.sass.swig',
+        sassOutputName: 'various/_AUTOGENicons.sass',
         fontPath: '../fonts',
         className: 'icon',
         options: {
